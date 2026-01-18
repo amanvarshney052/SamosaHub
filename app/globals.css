@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .glass {
+        @apply bg-white/70 backdrop-blur-md border border-white/50;
+    }
+
+    .glass-dark {
+        @apply bg-black/40 backdrop-blur-md border border-white/10;
+    }
+
+    .text-gradient {
+        @apply bg-gradient-to-r from-[#FFD700] via-[#FF8C00] to-[#FFD700] bg-[length:200%_auto] bg-clip-text text-transparent animate-shine;
+    }
+
+    .hover-3d {
+        @apply transition-transform duration-500 hover:transform hover:-translate-y-2 hover:rotate-2;
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        perspective: 1000px;
+    }
+
+    .hover-glow:hover {
+        box-shadow: 0 15px 30px -5px rgba(255, 215, 0, 0.4);
+    }
+
+    .hover-shine {
+        @apply relative overflow-hidden;
+    }
+
+    .hover-shine::after {
+        content: '';
+        @apply absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] transition-none;
+    }
+
+    .hover-shine:hover::after {
+        @apply left-[200%] transition-[left] duration-700 ease-in-out;
+    }
+
+    .bg-pattern-dots {
+        background-image: radial-gradient(#FFD700 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+
+    .bg-pattern-grid {
+        background-image: linear-gradient(#FFD700 1px, transparent 1px),
+            linear-gradient(90deg, #FFD700 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: center center;
+        mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        opacity: 0.1;
+    }
+}
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: #FFF8E1;
+    /* Cream background */
+}
